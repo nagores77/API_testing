@@ -1,4 +1,4 @@
-#создаем базовый класс (как basic page)
+#создаем базовый класс (как basic page) - main methods
 import requests
 
 

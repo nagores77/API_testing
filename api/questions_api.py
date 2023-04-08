@@ -1,3 +1,5 @@
+# URLs for requests
+
 from api.client import Client
 import json
 
@@ -69,6 +71,29 @@ class Api(Client):
         """
         url = self.BASE_URL + self.USERS + F"/{id}"
         return self.delete(url)
+
+
+
+
+    def user_register(self, email: str, password: str ):
+        """
+                :method: post
+                :routs: /api/users/register
+                :status: 201
+                :body: {
+                            "email": "eve.holt@reqres.in",
+                            "password": ""
+                        }
+                """
+        url = self.BASE_URL + self.USERS
+        payload = json.dumps({
+            "email": F"{email}",
+            "password": F"{password}"
+        })
+        headers = {
+            'Content-Type': 'application/json'
+        }
+        return self.post(url, headers, payload)
 
 
 api = Api() # объект
