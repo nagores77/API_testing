@@ -78,14 +78,14 @@ class Api(Client):
     def user_register(self, email: str, password: str ):
         """
                 :method: post
-                :routs: /api/users/register
-                :status: 201
+                :routs: /api/register
+                :status: 200
                 :body: {
-                            "email": "eve.holt@reqres.in",
+                            "email": "",
                             "password": ""
                         }
                 """
-        url = self.BASE_URL + self.USERS
+        url = self.BASE_URL + '/register'
         payload = json.dumps({
             "email": F"{email}",
             "password": F"{password}"
