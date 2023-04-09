@@ -25,5 +25,5 @@ def test_register_negative():
     assert res.body["error"] == "Missing password"
 
 
-    #assert api.delete_user(res.json()).status_code == HTTPStatus.NO_CONTENT
+
 
