@@ -1,6 +1,7 @@
 from api.questions_api import api
 from http import HTTPStatus
 from utils.assertions import Assert
+import re
 
 
 def test_list_users():
@@ -23,6 +24,8 @@ def test_single_user():
 
     assert res.status_code == HTTPStatus.OK
     Assert.validate_schema(res_body)
+    assert re.fullmatch(r'\w[a-z]{0,6}', res_body["data"]["last_name"])
+    print(res_body)
 
 
 def test_create():    #need to delete created data. Тест дб атомарным: созданную в целях проверки запись н-но удалить по окончании теста
@@ -33,6 +36,7 @@ def test_create():    #need to delete created data. Тест дб атомарн
     assert res.status_code == HTTPStatus.CREATED
     assert res.json()['name'] == name
     assert res.json()['job'] == job
+    assert re.fullmatch(r'\d{1,4}', res.json()['id'])  #это нормально, что подсвечивает желтым. Посвечиваются все регулярные выр-ния
 
     assert api.delete_user(res.json()['id']).status_code == HTTPStatus.NO_CONTENT
 
