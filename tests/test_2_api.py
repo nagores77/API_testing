@@ -9,6 +9,7 @@ def test_list_users():
 
     assert res.status_code == HTTPStatus.OK
     Assert.validate_schema(res.json()) # через класс обр-ся к методу и передаем json
+    assert res.headers['Cache-Control'] == 'max-age=14400' #макс объем кэша - Проверка заголовка
 
 
 def test_singe_user_not_found():

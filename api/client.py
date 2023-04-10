@@ -5,13 +5,15 @@ import requests
 class Client:
 
     @staticmethod  #для их вызова не нужен объект (для статических методов), тк не исп-т self, ему не н-на инициализация
-    def get(url):
-        return requests.request("GET", url)
+    def get(url, timeout=5):
+        return requests.request("GET", url, timeout=timeout)
 
     @staticmethod
-    def post(url, headers, payload):
-        return requests.request("POST", url, headers=headers, data=payload)
+    def post(url, headers, payload, timeout=5):
+        return requests.request("POST", url, headers=headers, data=payload, timeout=timeout)
 
     @staticmethod
-    def delete(url):
-        return requests.request("DELETE", url)
+    def delete(url, timeout=5):
+        return requests.request("DELETE", url, timeout=timeout)
+
+
