@@ -8,9 +8,17 @@ def test_register_positive():
     email = 'eve.holt@reqres.in'
     password = 'Parol'
     res = api.user_register(email, password)
+    res.body = res.json()
+
+    example = {
+        "id": 4,
+        "token": "QpwL5tke4Pnpja7X4"
+    }
 
     assert res.status_code == HTTPStatus.OK
-    #Assert.validate_schema(res.status_code)
+    assert example == res.body
+
+
 
 
 
