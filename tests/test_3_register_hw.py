@@ -7,12 +7,12 @@ import requests
 def test_register_positive():
     email = 'eve.holt@reqres.in'
     password = 'Parol'
-    res = api.create(email, password)
+    res = api.user_register(email, password)
 
-    #assert res.status_code == HTTPStatus.CREATED
-    assert api.list_users().status_code == HTTPStatus.OK
+    assert res.status_code == HTTPStatus.OK
+    #Assert.validate_schema(res.status_code)
 
-    assert api.delete_user(res.json()).status_code == HTTPStatus.NO_CONTENT
+
 
 
 def test_register_negative():
